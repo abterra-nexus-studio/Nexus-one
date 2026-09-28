@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#0b0d14">
+<meta name="description" content="NEXUS ONE — a privacy-first everyday digital toolkit by ABTERRA NEXUS STUDIO.">
+<title>NEXUS ONE — ABTERRA NEXUS STUDIO</title>
+<style>
+:root{--bg:#080a10;--panel:#10131d;--panel2:#151925;--text:#f5f7ff;--muted:#9aa3b7;--line:#252b3a;--a:#8b5cf6;--b:#22d3ee;--good:#34d399;--danger:#fb7185;--shadow:0 20px 60px #0007}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 15% 0,#24204d 0,transparent 34%),radial-gradient(circle at 100% 15%,#073943 0,transparent 30%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;min-height:100vh}
+button,input,textarea,select{font:inherit}button{cursor:pointer}
+.wrap{width:min(1180px,calc(100% - 28px));margin:auto}.top{position:sticky;top:0;z-index:20;background:#080a10cc;backdrop-filter:blur(18px);border-bottom:1px solid #ffffff0b}.nav{height:68px;display:flex;align-items:center;justify-content:space-between}.brand{display:flex;align-items:center;gap:11px;font-weight:900;letter-spacing:.5px}.mark{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,var(--a),var(--b));display:grid;place-items:center;color:#fff;box-shadow:0 8px 30px #8b5cf655}.brand small{display:block;color:var(--muted);font-size:9px;letter-spacing:2px;margin-top:2px}.nav button,.iconbtn{border:1px solid var(--line);background:#ffffff08;color:var(--text);border-radius:11px;padding:9px 12px}
+.hero{padding:58px 0 32px;text-align:center}.pill{display:inline-flex;border:1px solid #ffffff15;background:#ffffff08;padding:7px 12px;border-radius:999px;color:#cdd5e8;font-size:12px}.hero h1{font-size:clamp(42px,9vw,82px);line-height:.92;margin:18px 0 12px;letter-spacing:-4px;background:linear-gradient(90deg,#fff,var(--b),#b58cff);-webkit-background-clip:text;background-clip:text;color:transparent}.hero p{color:var(--muted);max-width:650px;margin:0 auto 24px;font-size:16px}.search{width:min(720px,100%);margin:auto;position:relative}.search input{width:100%;padding:17px 18px 17px 48px;background:#0f1320;border:1px solid #ffffff15;color:var(--text);border-radius:16px;outline:none;box-shadow:var(--shadow)}.search span{position:absolute;left:17px;top:15px;color:var(--muted)}
+.stats{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:22px 0}.stat{padding:9px 13px;border:1px solid #ffffff12;border-radius:10px;background:#ffffff06;color:#b8c1d5;font-size:12px}
+.sectionhead{display:flex;align-items:end;justify-content:space-between;margin:22px 0 13px}.sectionhead h2{margin:0;font-size:20px}.sectionhead p{margin:4px 0 0;color:var(--muted);font-size:12px}.tools{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.tool{background:linear-gradient(145deg,#121622,#0e1119);border:1px solid var(--line);border-radius:17px;padding:17px;min-height:145px;transition:.2s;position:relative}.tool:hover{transform:translateY(-3px);border-color:#ffffff25}.tool .emoji{font-size:25px}.tool h3{margin:12px 0 5px;font-size:15px}.tool p{margin:0;color:var(--muted);font-size:12px;line-height:1.45}.star{position:absolute;right:12px;top:12px;border:0;background:none;color:#687086;font-size:18px}.star.on{color:#fbbf24}.open{margin-top:14px;background:#ffffff0a;color:#dfe6f5;border:1px solid #ffffff12;border-radius:9px;padding:7px 10px;font-size:11px}
+.panel{margin:24px 0 70px;background:#0e121b;border:1px solid var(--line);border-radius:22px;padding:20px;box-shadow:var(--shadow)}.panelhead{display:flex;justify-content:space-between;align-items:center;gap:12px}.panelhead h2{margin:0}.panelhead p{color:var(--muted);font-size:12px}.close{border:1px solid var(--line);background:#ffffff08;color:#fff;border-radius:10px;padding:8px 11px}.field{margin:14px 0}.field label{display:block;color:#c8d0e1;font-size:12px;margin-bottom:7px}.field input,.field textarea,.field select{width:100%;background:#090c13;color:#fff;border:1px solid var(--line);border-radius:11px;padding:11px;outline:none}.field textarea{min-height:140px;resize:vertical}.row{display:flex;gap:9px;flex-wrap:wrap}.btn{border:0;border-radius:10px;padding:10px 13px;background:linear-gradient(135deg,var(--a),#6d5dfc);color:#fff;font-weight:700}.btn.alt{background:#ffffff0a;border:1px solid var(--line)}.result{background:#080b11;border:1px solid var(--line);padding:14px;border-radius:12px;white-space:pre-wrap;word-break:break-word;margin-top:12px}.danger{color:var(--danger)}.good{color:var(--good)}.hidden{display:none!important}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(30px);opacity:0;background:#fff;color:#080a10;padding:10px 15px;border-radius:10px;font-size:12px;font-weight:700;transition:.25s;z-index:50}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}footer{border-top:1px solid #ffffff0b;padding:26px 0 40px;color:#737d92;font-size:11px;text-align:center}
+@media(max-width:900px){.tools{grid-template-columns:repeat(2,1fr)}}@media(max-width:540px){.tools{grid-template-columns:1fr 1fr}.tool{min-height:132px;padding:14px}.hero{padding-top:42px}.hero h1{letter-spacing:-2px}.brand span{display:none}}
+</style>
+
+<meta name="application-name" content="NEXUS ONE">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="NEXUS ONE">
+<meta property="og:title" content="NEXUS ONE — ABTERRA NEXUS STUDIO">
+<meta property="og:description" content="One tab for everyday digital tools. Fast, lightweight and browser-first.">
+<meta property="og:type" content="website">
+<style>
+/* Launch-ready additions */
+.kbd{font-size:10px;border:1px solid var(--line);background:#ffffff08;border-radius:6px;padding:2px 6px;color:var(--muted)}
+.quick{display:flex;gap:8px;overflow:auto;padding:2px 0 5px;margin:0 0 12px}.quick button{white-space:nowrap;border:1px solid var(--line);background:#ffffff07;color:var(--muted);border-radius:999px;padding:7px 10px;font-size:11px}
+.launchgrid{display:grid;grid-template-columns:1.2fr .8fr;gap:12px;margin:14px 0}.launchcard{border:1px solid var(--line);background:#ffffff06;border-radius:16px;padding:16px}.launchcard h3{margin:0 0 7px}.launchcard p{margin:0;color:var(--muted);font-size:12px;line-height:1.5}
+.drawer{position:fixed;inset:0;background:#0008;backdrop-filter:blur(8px);z-index:60;display:none}.drawer.open{display:block}.drawerbox{position:absolute;right:0;top:0;height:100%;width:min(390px,92vw);background:#0d111a;border-left:1px solid var(--line);padding:22px;overflow:auto}.drawerbox h2{margin-top:0}.drawerbox p,.drawerbox li{color:var(--muted);font-size:12px;line-height:1.6}
+.light .drawerbox{background:#fff}
+.install{display:none}.install.show{display:inline-flex}
+@media(max-width:700px){.launchgrid{grid-template-columns:1fr}.nav .actions{display:flex}.nav{gap:8px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap nav">
+<div class="brand"><div class="mark">N</div><div>NEXUS ONE<small>ABTERRA NEXUS STUDIO</small></div></div>
+<div class="actions" style="display:flex;gap:7px">
+<button id="installBtn" class="install">Install</button>
+<button id="aboutBtn">About</button>
+<button id="theme">☀︎</button>
+</div></div></header>
+
+<main class="wrap">
+<section class="hero">
+<div class="pill">⚡ ONE PAGE • NO LOGIN • PRIVACY FIRST</div>
+<h1>NEXUS ONE</h1>
+<p>One tab for the little digital jobs you do every day. Fast browser tools, built to keep your work on your device.</p>
+<div class="search"><span>⌕</span><input id="search" placeholder="Search tools… try “QR”, “password”, “JSON”"></div>
+<div class="stats"><div class="stat">12 tools</div><div class="stat">Single HTML</div><div class="stat">Local processing</div><div class="stat">Mobile ready</div></div>
+<div class="quick" id="quick">
+<button data-q="calc">🧮 Calculator</button><button data-q="pass">🔐 Password</button>
+<button data-q="json">📊 JSON</button><button data-q="qr">🔗 QR</button><button data-q="timer">⏱️ Timer</button>
+<button data-q="gradient">🎨 Gradient</button>
+</div>
+<div class="launchgrid">
+<div class="launchcard"><h3>⚡ Built for speed</h3><p>Most tools process data directly in your browser. No account, dashboard clutter or unnecessary setup.</p></div>
+<div class="launchcard"><h3>⌨️ Power tip</h3><p>Press <span class="kbd">/</span> to focus search. Press <span class="kbd">Esc</span> to close the workspace.</p></div>
+</div>
+</section>
+
+<section><div class="sectionhead"><div><h2>Essential tools</h2><p>Tap a tool to open it below.</p></div></div><div class="tools" id="tools"></div></section>
+<section id="workspace" class="panel hidden"></section>
+</main>
+
+
+<div class="drawer" id="drawer"><div class="drawerbox">
+<div style="display:flex;justify-content:space-between;align-items:center"><h2>About NEXUS ONE</h2><button class="close" id="closeDrawer">Close</button></div>
+<p><b>NEXUS ONE</b> is a lightweight utility toolkit by <b>ABTERRA NEXUS STUDIO</b>.</p>
+<h3>Privacy</h3><p>Core tools operate locally in your browser. Favorites and theme preferences use local browser storage.</p>
+<p><b>QR note:</b> the QR generator can use a remote QR image endpoint, so avoid sensitive content. Other core utilities do not need that service.</p>
+<h3>Launch checklist</h3><ul><li>Host the single HTML file on any static host.</li><li>Use the title, description and social metadata already included.</li><li>Share the live URL in Product Hunt, social profiles and your studio website.</li></ul>
+<button class="btn" id="exportBtn">Export Settings</button>
+<button class="btn alt" id="importBtn">Import Settings</button>
+<input type="file" id="importFile" accept=".json" class="hidden">
+</div></div><footer>© <span id="year"></span> ABTERRA NEXUS STUDIO • NEXUS ONE<br>Built as a lightweight browser-first toolkit.</footer>
+<div class="toast" id="toast"></div>
+
+<script>
+const defs=[
+{id:'calc',e:'🧮',n:'Smart Calculator',d:'Expressions, percentages and quick calculations.',keys:'calculator math percentage'},
+{id:'words',e:'📝',n:'Text Counter',d:'Words, characters, sentences and reading time.',keys:'text word count characters'},
+{id:'pass',e:'🔐',n:'Password Generator',d:'Generate strong passwords locally in your browser.',keys:'password security generator'},
+{id:'qr',e:'🔗',n:'QR Generator',d:'Create a QR code from any text or URL.',keys:'qr link url code'},
+{id:'timer',e:'⏱️',n:'Focus Timer',d:'Simple focus countdown with start, pause and reset.',keys:'timer pomodoro focus'},
+{id:'units',e:'📐',n:'Unit Converter',d:'Length, weight, temperature and digital storage.',keys:'convert units length weight celsius'},
+{id:'json',e:'📊',n:'JSON Formatter',d:'Validate, format and minify JSON instantly.',keys:'json developer code formatter'},
+{id:'gradient',e:'🎨',n:'Gradient Studio',d:'Generate a CSS linear gradient and copy it.',keys:'gradient css design color'},
+{id:'case',e:'🔤',n:'Text Formatter',d:'Uppercase, lowercase, title case and clean spaces.',keys:'uppercase lowercase title text'},
+{id:'base64',e:'🧩',n:'Base64 Tool',d:'Encode and decode plain text locally.',keys:'base64 encode decode'},
+{id:'slug',e:'🔗',n:'Slug Maker',d:'Turn titles into clean URL-friendly slugs.',keys:'slug url seo'},
+{id:'timestamp',e:'🕐',n:'Timestamp',d:'Get current Unix timestamp and convert timestamps.',keys:'unix time date developer'}
+];
+let fav=JSON.parse(localStorage.getItem('nexusFav')||'[]');
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+function toast(x){let t=$('#toast');t.textContent=x;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1700)}
+function render(filter=''){let box=$('#tools');box.innerHTML='';defs.filter(x=>(x.n+' '+x.d+' '+x.keys).toLowerCase().includes(filter.toLowerCase())).forEach(x=>{let el=document.createElement('article');el.className='tool';el.dataset.search=x.n+' '+x.keys;el.innerHTML=`<button class="star ${fav.includes(x.id)?'on':''}" data-f="${x.id}">★</button><div class="emoji">${x.e}</div><h3>${x.n}</h3><p>${x.d}</p><button class="open" data-open="${x.id}">Open tool →</button>`;box.appendChild(el)});$$('[data-open]').forEach(b=>b.onclick=()=>openTool(b.dataset.open));$$('[data-f]').forEach(b=>b.onclick=()=>{let id=b.dataset.f;fav=fav.includes(id)?fav.filter(x=>x!==id):[...fav,id];localStorage.setItem('nexusFav',JSON.stringify(fav));render($('#search').value)})}
+$('#search').oninput=e=>render(e.target.value);$('#year').textContent=new Date().getFullYear();render();
+
+function shell(title,desc,body){let w=$('#workspace');w.classList.remove('hidden');w.innerHTML=`<div class="panelhead"><div><h2>${title}</h2><p>${desc}</p></div><button class="close" onclick="closeTool()">Close</button></div>${body}`;w.scrollIntoView({behavior:'smooth',block:'start'})}
+function closeTool(){$('#workspace').classList.add('hidden');$('#workspace').innerHTML=''}
+function copyText(v){navigator.clipboard?.writeText(v).then(()=>toast('Copied to clipboard')).catch(()=>toast('Copy failed'))}
+function openTool(id){
+if(id==='calc')shell('🧮 Smart Calculator','Try 12.5% of 800, 100/4, or simple expressions.',`<div class="field"><input id="calcIn" placeholder="Example: 12.5% of 800"></div><button class="btn" onclick="calculate()">Calculate</button><div class="result" id="calcOut">Result appears here.</div>`);
+if(id==='words')shell('📝 Text Counter','Everything is calculated locally.',`<div class="field"><textarea id="wordIn" oninput="countText()" placeholder="Paste or type your text…"></textarea></div><div class="result" id="wordOut">Words: 0\nCharacters: 0\nCharacters without spaces: 0\nSentences: 0\nEstimated reading time: 0 min</div>`);
+if(id==='pass')shell('🔐 Password Generator','Generated locally — nothing is uploaded.',`<div class="field"><label>Length: <b id="plen">20</b></label><input id="pLen" type="range" min="8" max="64" value="20" oninput="$('#plen').textContent=this.value"></div><div class="row"><label><input id="pUpper" type="checkbox" checked> Uppercase</label><label><input id="pNum" type="checkbox" checked> Numbers</label><label><input id="pSym" type="checkbox" checked> Symbols</label></div><div class="result" id="pOut">Click Generate</div><button class="btn" onclick="genPass()">Generate</button> <button class="btn alt" onclick="copyText($('#pOut').textContent)">Copy</button>`);
+if(id==='qr')shell('🔗 QR Generator','Create a QR image from text or a URL.','<div class="field"><input id="qrIn" placeholder="https://example.com"></div><button class="btn" onclick="makeQR()">Generate QR</button><div id="qrOut" class="result">Enter content and generate.</div>');
+if(id==='timer')shell('⏱️ Focus Timer','A lightweight countdown for focus sessions.','<div class="result" id="clock" style="font-size:48px;text-align:center">25:00</div><div class="row" style="margin-top:12px"><button class="btn" onclick="startTimer()">Start</button><button class="btn alt" onclick="pauseTimer()">Pause</button><button class="btn alt" onclick="resetTimer()">Reset</button></div>');
+if(id==='units')shell('📐 Unit Converter','Choose a category and enter a value.',`<div class="row"><select id="uType" onchange="convertUnit()"><option value="length">Length</option><option value="weight">Weight</option><option value="temp">Temperature</option><option value="storage">Storage</option></select><input id="uVal" type="number" value="1" oninput="convertUnit()"></div><div class="result" id="uOut"></div>`),convertUnit();
+if(id==='json')shell('📊 JSON Formatter','Validate and pretty-print JSON.',`<div class="field"><textarea id="jsonIn" placeholder='{"hello":"world"}'></textarea></div><div class="row"><button class="btn" onclick="formatJSON()">Format</button><button class="btn alt" onclick="minJSON()">Minify</button></div><div class="result" id="jsonOut"></div>`);
+if(id==='gradient')shell('🎨 Gradient Studio','Create a CSS gradient you can paste into your project.',`<div class="row"><input id="g1" type="color" value="#8b5cf6"><input id="g2" type="color" value="#22d3ee"><select id="gdeg"><option>90deg</option><option>0deg</option><option>45deg</option><option>135deg</option><option>180deg</option></select></div><div id="gprev" style="height:130px;border-radius:14px;margin:14px 0"></div><div class="result" id="gout"></div><button class="btn" onclick="copyText($('#gout').textContent)">Copy CSS</button>`),updateGrad();
+if(id==='case')shell('🔤 Text Formatter','Transform text instantly.',`<div class="field"><textarea id="caseIn"></textarea></div><div class="row"><button class="btn" onclick="caseDo('upper')">UPPER</button><button class="btn" onclick="caseDo('lower')">lower</button><button class="btn" onclick="caseDo('title')">Title Case</button><button class="btn alt" onclick="caseDo('clean')">Clean spaces</button></div>`);
+if(id==='base64')shell('🧩 Base64 Tool','Browser-native text encoding/decoding.',`<div class="field"><textarea id="bIn" placeholder="Enter text…"></textarea></div><div class="row"><button class="btn" onclick="b64('enc')">Encode</button><button class="btn" onclick="b64('dec')">Decode</button></div><div class="result" id="bOut"></div>`);
+if(id==='slug')shell('🔗 Slug Maker','Create clean URL slugs.',`<div class="field"><input id="slugIn" placeholder="My Amazing Product Title"></div><button class="btn" onclick="makeSlug()">Create Slug</button><div class="result" id="slugOut"></div>`);
+if(id==='timestamp')shell('🕐 Timestamp','Unix time tools.',`<div class="result" id="nowStamp"></div><div class="field"><input id="stampIn" placeholder="Unix timestamp (optional)"></div><button class="btn" onclick="convertStamp()">Convert</button><div class="result" id="stampOut"></div>`),updateStamp();
+}
+function calculate(){let s=$('#calcIn').value.trim().replace(/(\d+(?:\.\d+)?)\s*%\s*of\s*(\d+(?:\.\d+)?)/i,(_,p,n)=>`(${p}/100)*${n}`).replace(/(\d+(?:\.\d+)?)%/g,'($1/100)');try{if(!/^[0-9+\-*/().%\s]+$/.test(s))throw 0;$('#calcOut').textContent=Function('"use strict";return '+s)()}catch{$('#calcOut').textContent='Please enter a simple valid expression.'}}
+function countText(){let s=$('#wordIn').value.trim(),words=s?s.split(/\s+/).length:0,sent=s?s.split(/[.!?]+/).filter(Boolean).length:0;$('#wordOut').textContent=`Words: ${words}\nCharacters: ${s.length}\nCharacters without spaces: ${s.replace(/\s/g,'').length}\nSentences: ${sent}\nEstimated reading time: ${words?Math.max(1,Math.ceil(words/200)):0} min`}
+function genPass(){let chars='abcdefghijklmnopqrstuvwxyz',c=chars+(($('#pUpper').checked)?chars.toUpperCase():'')+(($('#pNum').checked)?'0123456789':'')+(($('#pSym').checked)?'!@#$%^&*()-_=+[]{};:,.?':'');let out='';let a=new Uint32Array(+$('#pLen').value);crypto.getRandomValues(a);a.forEach(x=>out+=c[x%c.length]);$('#pOut').textContent=out}
+function makeQR(){let v=encodeURIComponent($('#qrIn').value.trim());if(!v){$('#qrOut').textContent='Enter text or a URL.';return}$('#qrOut').innerHTML=`<div style="text-align:center"><img alt="QR code" style="max-width:260px;width:100%;background:#fff;padding:12px;border-radius:12px" src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${v}"><p style="font-size:11px;color:#9aa3b7">QR image uses an external QR service. Your content is sent to that service.</p></div>`}
+let remaining=1500,timer=null;function draw(){let m=Math.floor(remaining/60),s=remaining%60;$('#clock').textContent=`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`}function startTimer(){if(timer)return;timer=setInterval(()=>{if(remaining>0){remaining--;draw()}else{clearInterval(timer);timer=null;toast('Focus session complete')}},1000)}function pauseTimer(){clearInterval(timer);timer=null}function resetTimer(){pauseTimer();remaining=1500;draw()}
+function convertUnit(){let v=+$('#uVal').value||0,t=$('#uType').value,o='';if(t==='length')o=`${v} m = ${(v*3.28084).toFixed(4)} ft = ${(v*39.3701).toFixed(2)} in`;if(t==='weight')o=`${v} kg = ${(v*2.20462).toFixed(4)} lb = ${(v*35.274).toFixed(2)} oz`;if(t==='temp')o=`${v} °C = ${(v*9/5+32).toFixed(2)} °F = ${(v+273.15).toFixed(2)} K`;if(t==='storage')o=`${v} GB = ${(v*1024).toFixed(2)} MB = ${(v*1024*1024).toFixed(2)} KB`;$('#uOut').textContent=o}
+function formatJSON(){try{$('#jsonOut').textContent=JSON.stringify(JSON.parse($('#jsonIn').value),null,2)}catch(e){$('#jsonOut').textContent='Invalid JSON: '+e.message}}
+function minJSON(){try{$('#jsonOut').textContent=JSON.stringify(JSON.parse($('#jsonIn').value))}catch(e){$('#jsonOut').textContent='Invalid JSON: '+e.message}}
+function updateGrad(){let css=`linear-gradient(${$('#gdeg').value}, ${$('#g1').value}, ${$('#g2').value})`;$('#gprev').style.background=css;$('#gout').textContent=`background: ${css};`}['g1','g2','gdeg'].forEach(x=>document.addEventListener('input',e=>{if(e.target.id===x)updateGrad()}));
+function caseDo(t){let e=$('#caseIn'),s=e.value;if(t==='upper')e.value=s.toUpperCase();if(t==='lower')e.value=s.toLowerCase();if(t==='clean')e.value=s.replace(/\s+/g,' ').trim();if(t==='title')e.value=s.toLowerCase().replace(/\b\w/g,c=>c.toUpperCase())}
+function b64(t){try{$('#bOut').textContent=t==='enc'?btoa(unescape(encodeURIComponent($('#bIn').value))):decodeURIComponent(escape(atob($('#bIn').value)))}catch{$('#bOut').textContent='Invalid input.'}}
+function makeSlug(){$('#slugOut').textContent=$('#slugIn').value.toLowerCase().trim().normalize('NFKD').replace(/[^\w\s-]/g,'').replace(/[\s_-]+/g,'-').replace(/^-+|-+$/g,'')}
+function updateStamp(){$('#nowStamp').textContent='Current Unix timestamp: '+Math.floor(Date.now()/1000)}function convertStamp(){let x=$('#stampIn').value.trim();let d=x?new Date(Number(x)*1000):new Date();$('#stampOut').textContent=isNaN(d)?'Invalid timestamp':d.toString()}
+
+// Theme
+$('#theme').onclick=()=>{document.body.classList.toggle('light');let light=document.body.classList.contains('light');if(light){document.documentElement.style.setProperty('--bg','#f5f7fb');document.documentElement.style.setProperty('--panel','#fff');document.documentElement.style.setProperty('--panel2','#f1f4f9');document.documentElement.style.setProperty('--text','#10131d');document.documentElement.style.setProperty('--muted','#5f6879');document.documentElement.style.setProperty('--line','#dfe4ed');document.querySelector('.top').style.background='#ffffffdd';$('#theme').textContent='☾'}else location.reload()}
+</script>
+
+<script>
+/* NEXUS ONE launch utilities */
+document.querySelectorAll('[data-q]').forEach(b=>b.onclick=()=>openTool(b.dataset.q));
+const drawer=document.getElementById('drawer');
+document.getElementById('aboutBtn').onclick=()=>drawer.classList.add('open');
+document.getElementById('closeDrawer').onclick=()=>drawer.classList.remove('open');
+drawer.addEventListener('click',e=>{if(e.target===drawer)drawer.classList.remove('open')});
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='/' && !['INPUT','TEXTAREA'].includes(document.activeElement.tagName)){e.preventDefault();document.getElementById('search').focus()}
+  if(e.key==='Escape'){drawer.classList.remove('open');closeTool()}
+});
+
+document.getElementById('exportBtn').onclick=()=>{
+  const data={favorites:fav,theme:document.body.classList.contains('light')?'light':'dark',exportedAt:new Date().toISOString()};
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));a.download='nexus-one-settings.json';a.click();toast('Settings exported');
+};
+document.getElementById('importBtn').onclick=()=>document.getElementById('importFile').click();
+document.getElementById('importFile').onchange=e=>{
+  const f=e.target.files[0]; if(!f)return;
+  const r=new FileReader();r.onload=()=>{try{const d=JSON.parse(r.result);if(Array.isArray(d.favorites)){fav=d.favorites;localStorage.setItem('nexusFav',JSON.stringify(fav));render($('#search').value)}toast('Settings imported')}catch{toast('Invalid settings file')}};
+  r.readAsText(f);
+};
+
+/* Make theme preference persistent instead of resetting the page. */
+const oldTheme=document.getElementById('theme').onclick;
+document.getElementById('theme').onclick=()=>{
+  document.body.classList.toggle('light');
+  const light=document.body.classList.contains('light');
+  if(light){
+    document.documentElement.style.setProperty('--bg','#f5f7fb');document.documentElement.style.setProperty('--panel','#fff');
+    document.documentElement.style.setProperty('--panel2','#f1f4f9');document.documentElement.style.setProperty('--text','#10131d');
+    document.documentElement.style.setProperty('--muted','#5f6879');document.documentElement.style.setProperty('--line','#dfe4ed');
+    document.querySelector('.top').style.background='#ffffffdd';document.getElementById('theme').textContent='☾';
+  }else{
+    document.documentElement.style.setProperty('--bg','#080a10');document.documentElement.style.setProperty('--panel','#10131d');
+    document.documentElement.style.setProperty('--panel2','#151925');document.documentElement.style.setProperty('--text','#f5f7ff');
+    document.documentElement.style.setProperty('--muted','#9aa3b7');document.documentElement.style.setProperty('--line','#252b3a');
+    document.querySelector('.top').style.background='#080a10cc';document.getElementById('theme').textContent='☀︎';
+  }
+  localStorage.setItem('nexusTheme',light?'light':'dark');
+};
+if(localStorage.getItem('nexusTheme')==='light')document.getElementById('theme').click();
+
+/* Installable app shell for HTTPS static hosting. */
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;document.getElementById('installBtn').classList.add('show')});
+document.getElementById('installBtn').onclick=async()=>{if(!deferredPrompt)return;deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;document.getElementById('installBtn').classList.remove('show')};
+
+const manifest={name:'NEXUS ONE — ABTERRA NEXUS STUDIO',short_name:'NEXUS ONE',start_url:'.',display:'standalone',background_color:'#080a10',theme_color:'#0b0d14',description:'Everyday digital toolkit'};
+const manifestURL=URL.createObjectURL(new Blob([JSON.stringify(manifest)],{type:'application/manifest+json'}));
+const ml=document.createElement('link');ml.rel='manifest';ml.href=manifestURL;document.head.appendChild(ml);
+
+/* Accessibility */
+document.querySelectorAll('button').forEach(b=>{if(!b.getAttribute('aria-label') && !b.textContent.trim())b.setAttribute('aria-label','Button')});
+</script>
+</body>
+</html>
